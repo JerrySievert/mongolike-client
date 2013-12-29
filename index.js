@@ -6,8 +6,6 @@ function MongoClient ( ) {
 
 var MongoClient = {
   "connect": function (url, callback) {
-    console.log("in connect");
-    
     var client = new pg.Client(url);
     client.connect(function (err) {
       if (err) {
