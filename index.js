@@ -1,28 +1,16 @@
 var pg = require('pg');
-var Connection = require('./lib/connection');
+var Db = require('./lib/db').Db;
 
-function MongoClient ( ) {
-}
 
-var MongoClient = {
+MongoClient = {
   "connect": function (url, callback) {
-    var client = new pg.Client(url);
-    client.connect(function (err) {
-      if (err) {
-        return console.error('could not connect to postgres, are you sure this is right?', err.toString());
-      }
+    var db = new Db("", { url: "" });
+    db.url = url;
 
-      client.query('SELECT mongolike_version()', function(err, result) {
-        if (err) {
-          console.error('error running query', err);
-          callback('it seems that the mongolike extensions have not been installed');
-        } else {
-          callback(null, new Connection(client));
-        }
-      });
-    });
+    db.open(callback);
   }
 };
 
 
 exports.MongoClient = MongoClient;
+exports.Db = Db;
