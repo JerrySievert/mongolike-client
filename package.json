@@ -10,5 +10,11 @@
   "license": "BSD-2-Clause",
   "dependencies": {
     "pg": "~2.9.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt": "~0.4.2",
+    "grunt-complexity": "~0.1.4",
+    "grunt-jsdoc-plugin": "git+https://github.com/JerrySievert/grunt-jsdoc-plugin.git"
   }
 }
