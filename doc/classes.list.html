@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>MongolikeClient Source: db.js</title>
+	<title>MongolikeClient Classes</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -55,105 +55,99 @@
 	<div class="row-fluid">
 
 		
-			<div class="span12">
-				
+		<div class="span8">
+			
 				<div id="main">
 					
 
 
-		<h1 class="page-title">Source: db.js</h1>
+	<h1 class="page-title">Classes</h1>
+<section>
+
+<header>
+    <h2>
     
-    <section>
-        <article>
-            <pre class="sunlight-highlight-javascript linenums">var pg     = require('pg'),
-    util   = require('util'),
-    events = require('events');
+    </h2>
+    
+</header>
 
-var Collection = require('./collection');
+<article>
+    <div class="container-overview">
+    
 
-/**
- * A callback for a Db Instance.
- *
- * @callback databaseCallback
- * @param {String} error
- * @param {Db} Database Object
- */
+    
+        
 
-/**
- * A callback for a Db Instance closure.
- *
- * @callback closeCallback
- * @param {String} error
- */
+        
+<dl class="details">
+    
 
-/**
- * A Database Connection.
- * @constructor
- * @param {String} database - Name of Database to connect to.
- * @param {Server} server - {@link Server} object describing server to connect to.
- */
-function Db (database, server) {
-  events.EventEmitter.call(this);
+    
 
-  this.database = database;
-  this.server = server;
-  this.url = server.url + database;
-  this.closed = false;
-}
+    
 
-util.inherits(Db, events.EventEmitter);
+    
 
-/**
- * Opens a Database Connection
- * @param {DatabaseCallback} callback to execute when opened or errored.
- */
-Db.prototype.open = function (callback) {
-  var client = new pg.Client(this.url);
-  this.client = client;
-  var self = this;
+    
 
-  client.connect(function (err) {
-    if (err) {
-      return console.error('could not connect to postgres, are you sure this is right?', err.toString());
-    }
+    
 
-    client.query('SELECT mongolike_version()', function(err, result) {
-      if (err) {
-        console.error('error running query', err);
-        callback('it seems that the mongolike extensions have not been installed');
-      } else {
-        callback(null, self);
-      }
-    });
-  });
-};
+    
 
-/**
- * Closes a Database Connection
- * @param {closeCallback} callback to execute when closed.
- */
-Db.prototype.close = function (callback) {
-  if (this.client &amp;&amp; this.client.connection) {
-    this.client.end(callback);
-  }
-  this.closed = true;
-  this.emit('close');
-  callback();
-};
+    
 
-/**
- * Return a new {@link Collection}.
- * @param {String} Collection to connect to.
- * @returns Collection
- */
-Db.prototype.collection = function (name) {
-  return new Collection(name, this.client);
-};
+    
 
-exports.Db = Db;</pre>
-        </article>
-    </section>
+    
 
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="Collection.html">Collection</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Cursor.html">Cursor</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Db.html">Db</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Server.html">Server</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
@@ -176,6 +170,10 @@ exports.Db = Db;</pre>
 				</footer>
 			</div>
 
+			
+			<div class="span3">
+				<div id="toc"></div>
+			</div>
 			
 			<br clear="both">
 		</div>

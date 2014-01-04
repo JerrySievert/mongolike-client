@@ -26,7 +26,9 @@ module.exports = function (grunt) {
       dist : {
         src: [ 'lib/*.js' ],
         options: {
-          destination: 'doc'
+          destination: 'doc',
+          configure: __dirname + '/jsdoc.conf.json',
+          template: __dirname + '/node_modules/ink-docstrap/template'
         }
       }
     }
